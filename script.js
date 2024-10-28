@@ -173,136 +173,144 @@
 
 // Primitives vs Objects
 
-let age = 30; // primitive
-let oldAge = age; // primitive copy
-age = 31; // age is now 31, oldAge is still 30
-console.log(oldAge); // 30
-console.log(age); // 31
-// Reference types
-const me = {
-    name: 'Jonas',
-    age: 30,
-}; // object
-const friend = me; // reference copy
-friend.age = 27; // changing the age of friend also changes the age of me
-console.log('Friend:', friend); // 27
-console.log('Me:', me); // 27
+// let age = 30; // primitive
+// let oldAge = age; // primitive copy
+// age = 31; // age is now 31, oldAge is still 30
+// console.log(oldAge); // 30
+// console.log(age); // 31
+// // Reference types
+// const me = {
+//     name: 'Jonas',
+//     age: 30,
+// }; // object
+// const friend = me; // reference copy
+// friend.age = 27; // changing the age of friend also changes the age of me
+// console.log('Friend:', friend); // 27
+// console.log('Me:', me); // 27
 // Primitive vs Reference types
-let lastName = 'Williams'; // primitive
-let oldLastName = lastName; // primitive copy
-lastName = 'Davis'; // lastName is now 'Davis', oldLastName is still 'Williams'
-console.log(oldLastName); // Williams
-console.log(lastName); // Davis
-// Reference types
-const jessica = {
-    firstName: 'Jessica',
-    lastName: 'Williams',
-    age: 27,
-}; // object
-const marriedJessica = jessica; // reference copy
-marriedJessica.lastName = 'Davis'; // changing the lastName of marriedJessica also changes the lastName of jessica
-console.log('Before marriage:', jessica); // Davis
-console.log('After marriage:', marriedJessica); // Davis
+// let lastName = 'Williams'; // primitive
+// let oldLastName = lastName; // primitive copy
+// lastName = 'Davis'; // lastName is now 'Davis', oldLastName is still 'Williams'
+// console.log(oldLastName); // Williams
+// console.log(lastName); // Davis
+// // Reference types
+// const jessica = {
+//     firstName: 'Jessica',
+//     lastName: 'Williams',
+//     age: 27,
+// }; // object
+// const marriedJessica = jessica; // reference copy
+// marriedJessica.lastName = 'Davis'; // changing the lastName of marriedJessica also changes the lastName of jessica
+// console.log('Before marriage:', jessica); // Davis
+// console.log('After marriage:', marriedJessica); // Davis
 // Copying objects
-const jessica2 = {
-    firstName: 'Jessica',
-    lastName: 'Williams',
-    age: 27,
-}; // object
-const jessicaCopy = Object.assign({}, jessica2); // shallow copy
-jessicaCopy.lastName = 'Davis'; // changing the lastName of jessicaCopy does not change the lastName of jessica2
-console.log('Before marriage:', jessica2); // Williams
-console.log('After marriage:', jessicaCopy); // Davis
-// Spread operator
-const jessica3 = {
-    firstName: 'Jessica',
-    lastName: 'Williams',
-    age: 27,
-}; // object
-const jessicaSpread = { ...jessica3 }; // shallow copy
-jessicaSpread.lastName = 'Davis'; // changing the lastName of jessicaSpread does not change the lastName of jessica3
-console.log('Before marriage:', jessica3); // Williams
-console.log('After marriage:', jessicaSpread); // Davis
-// The Rest Pattern and Parameters
-const add = function (...numbers) {
-    let sum = 0;
-    for (let i = 0; i < numbers.length; i++) {
-        sum += numbers[i];
-    }
-    return sum;
-};
-console.log(add(2, 3)); // 5
-console.log(add(2, 3, 4, 5)); // 14
-console.log(add(2, 3, 4, 5, 6, 7, 8)); // 35
-// The Spread Operator
-const family = ['Jonas', 'Martha', 'Adam'];
-const newFamily = [...family, 'Mary']; // ['Jonas', 'Martha', 'Adam', 'Mary']
-console.log(newFamily); // ['Jonas', 'Martha', 'Adam', 'Mary']
-const newFamily2 = ['Mary', ...family]; // ['Mary', 'Jonas', 'Martha', 'Adam']
-console.log(newFamily2); // ['Mary', 'Jonas', 'Martha', 'Adam']
-const newFamily3 = [...family]; // ['Jonas', 'Martha', 'Adam']
-console.log(newFamily3); // ['Jonas', 'Martha', 'Adam']
-const newFamily4 = [...family, 'Mary', 'John']; // ['Jonas', 'Martha', 'Adam', 'Mary', 'John']
-console.log(newFamily4); // ['Jonas', 'Martha', 'Adam', 'Mary', 'John']
-const newFamily5 = ['Mary', ...family, 'John']; // ['Mary', 'Jonas', 'Martha', 'Adam', 'John']
-console.log(newFamily5); // ['Mary', 'Jonas', 'Martha', 'Adam', 'John']
-const newFamily6 = [...family, ...newFamily]; // ['Jonas', 'Martha', 'Adam', 'Mary', 'Jonas', 'Martha', 'Adam']
-console.log(newFamily6); // ['Jonas', 'Martha', 'Adam', 'Mary', 'Jonas', 'Martha', 'Adam']
-const newFamily7 = [...newFamily, ...family]; // ['Jonas', 'Martha', 'Adam', 'Mary', 'Jonas', 'Martha', 'Adam']
-console.log(newFamily7); // ['Jonas', 'Martha', 'Adam', 'Mary', 'Jonas', 'Martha', 'Adam']
-const newFamily8 = [...newFamily, 'John']; // ['Jonas', 'Martha', 'Adam', 'Mary', 'John']
-console.log(newFamily8); // ['Jonas', 'Martha', 'Adam', 'Mary', 'John']
-const newFamily9 = ['John', ...newFamily]; // ['John', 'Jonas', 'Martha', 'Adam', 'Mary']
-console.log(newFamily9); // ['John', 'Jonas', 'Martha', 'Adam', 'Mary']
-const newFamily10 = [...newFamily, 'John', 'Mary']; // ['Jonas', 'Martha', 'Adam', 'Mary', 'John', 'Mary']
-console.log(newFamily10); // ['Jonas', 'Martha', 'Adam', 'Mary', 'John', 'Mary']
+// const jessica2 = {
+//     firstName: 'Jessica',
+//     lastName: 'Williams',
+//     age: 27,
+//     family: ['Alice', 'Bob'],
+// }; // object
+// const jessicaCopy = Object.assign({}, jessica2); // shallow copy
+// jessicaCopy.lastName = 'Davis'; // changing the lastName of jessicaCopy does not change the lastName of jessica2
+// console.log('Before marriage:', jessica2); // Williams
+// console.log('After marriage:', jessicaCopy); // Davis
 
-// The forEach method
-const numbers = [1, 2, 3, 4, 5];
-numbers.forEach((number) => {
-    console.log(number); // 1 2 3 4 5
-});
-const numbers2 = [1, 2, 3, 4, 5];
-numbers2.forEach((number, index) => {
-    console.log(`Index: ${index}, Number: ${number}`); // Index: 0, Number: 1 ...
-});
-const numbers3 = [1, 2, 3, 4, 5];
-numbers3.forEach((number, index, array) => {
-    console.log(`Index: ${index}, Number: ${number}, Array: ${array}`); // Index: 0, Number: 1, Array: 1,2,3,4,5 ...
-});
-const numbers4 = [1, 2, 3, 4, 5];
-numbers4.forEach((number) => {
-    console.log(number * 2); // 2 4 6 8 10
-});
-const numbers5 = [1, 2, 3, 4, 5];
-const doubledNumbers = [];
-numbers5.forEach((number) => {
-    doubledNumbers.push(number * 2);
-});
-console.log(doubledNumbers); // [2, 4, 6, 8, 10]
-const numbers6 = [1, 2, 3, 4, 5];
-const doubledNumbers2 = numbers6.map((number) => number * 2);
-console.log(doubledNumbers2); // [2, 4, 6, 8, 10]
-const numbers7 = [1, 2, 3, 4, 5];
-const doubledNumbers3 = numbers7.map((number) => {
-    return number * 2;
-});
-console.log(doubledNumbers3); // [2, 4, 6, 8, 10]
-const numbers8 = [1, 2, 3, 4, 5];
-const doubledNumbers4 = numbers8.map((number, index) => {
-    return `Index: ${index}, Number: ${number * 2}`;
-});
-console.log(doubledNumbers4); // ['Index: 0, Number: 2', 'Index: 1, Number: 4', ...]
-const numbers9 = [1, 2, 3, 4, 5];
-const doubledNumbers5 = numbers9.map((number) => number * 2);
-console.log(doubledNumbers5); // [2, 4, 6, 8, 10]
-const numbers10 = [1, 2, 3, 4, 5];
-const doubledNumbers6 = numbers10.map((number) => number * 2);
-console.log(doubledNumbers6); // [2, 4, 6, 8, 10]
-const numbers11 = [1, 2, 3, 4, 5];
-const doubledNumbers7 = numbers11.map((number) => number * 2);
-console.log(doubledNumbers7); // [2, 4, 6, 8, 10]
+// jessicaCopy.family.push('mary'); // changing the family of jessicaCopy also changes the family of jessica2
 
 
-// The filter method
-const numbers12 = [1, 2, 3, 4, 5];
+// // Spread operator
+// const jessica3 = {
+//     firstName: 'Jessica',
+//     lastName: 'Williams',
+//     age: 27,
+// }; // object
+// const jessicaSpread = { ...jessica3 }; // shallow copy
+// jessicaSpread.lastName = 'Davis'; // changing the lastName of jessicaSpread does not change the lastName of jessica3
+// console.log('Before marriage3:', jessica3); // Williams
+// console.log('After marriage 3:', jessicaSpread); // Davis
+
+
+
+// // The Rest Pattern and Parameters
+// const add = function (...numbers) {
+//     let sum = 0;
+//     for (let i = 0; i < numbers.length; i++) {
+//         sum += numbers[i];
+//     }
+//     return sum;
+// };
+// console.log(add(2, 3)); // 5
+// console.log(add(2, 3, 4, 5)); // 14
+// console.log(add(2, 3, 4, 5, 6, 7, 8)); // 35
+// // The Spread Operator
+// const family = ['Jonas', 'Martha', 'Adam'];
+// const newFamily = [...family, 'Mary']; // ['Jonas', 'Martha', 'Adam', 'Mary']
+// console.log(newFamily); // ['Jonas', 'Martha', 'Adam', 'Mary']
+// const newFamily2 = ['Mary', ...family]; // ['Mary', 'Jonas', 'Martha', 'Adam']
+// console.log(newFamily2); // ['Mary', 'Jonas', 'Martha', 'Adam']
+// const newFamily3 = [...family]; // ['Jonas', 'Martha', 'Adam']
+// console.log(newFamily3); // ['Jonas', 'Martha', 'Adam']
+// const newFamily4 = [...family, 'Mary', 'John']; // ['Jonas', 'Martha', 'Adam', 'Mary', 'John']
+// console.log(newFamily4); // ['Jonas', 'Martha', 'Adam', 'Mary', 'John']
+// const newFamily5 = ['Mary', ...family, 'John']; // ['Mary', 'Jonas', 'Martha', 'Adam', 'John']
+// console.log(newFamily5); // ['Mary', 'Jonas', 'Martha', 'Adam', 'John']
+// const newFamily6 = [...family, ...newFamily]; // ['Jonas', 'Martha', 'Adam', 'Mary', 'Jonas', 'Martha', 'Adam']
+// console.log(newFamily6); // ['Jonas', 'Martha', 'Adam', 'Mary', 'Jonas', 'Martha', 'Adam']
+// const newFamily7 = [...newFamily, ...family]; // ['Jonas', 'Martha', 'Adam', 'Mary', 'Jonas', 'Martha', 'Adam']
+// console.log(newFamily7); // ['Jonas', 'Martha', 'Adam', 'Mary', 'Jonas', 'Martha', 'Adam']
+// const newFamily8 = [...newFamily, 'John']; // ['Jonas', 'Martha', 'Adam', 'Mary', 'John']
+// console.log(newFamily8); // ['Jonas', 'Martha', 'Adam', 'Mary', 'John']
+// const newFamily9 = ['John', ...newFamily]; // ['John', 'Jonas', 'Martha', 'Adam', 'Mary']
+// console.log(newFamily9); // ['John', 'Jonas', 'Martha', 'Adam', 'Mary']
+// const newFamily10 = [...newFamily, 'John', 'Mary']; // ['Jonas', 'Martha', 'Adam', 'Mary', 'John', 'Mary']
+// console.log(newFamily10); // ['Jonas', 'Martha', 'Adam', 'Mary', 'John', 'Mary']
+
+// // The forEach method
+// const numbers = [1, 2, 3, 4, 5];
+// numbers.forEach((number) => {
+//     console.log(number); // 1 2 3 4 5
+// });
+// const numbers2 = [1, 2, 3, 4, 5];
+// numbers2.forEach((number, index) => {
+//     console.log(`Index: ${index}, Number: ${number}`); // Index: 0, Number: 1 ...
+// });
+// const numbers3 = [1, 2, 3, 4, 5];
+// numbers3.forEach((number, index, array) => {
+//     console.log(`Index: ${index}, Number: ${number}, Array: ${array}`); // Index: 0, Number: 1, Array: 1,2,3,4,5 ...
+// });
+// const numbers4 = [1, 2, 3, 4, 5];
+// numbers4.forEach((number) => {
+//     console.log(number * 2); // 2 4 6 8 10
+// });
+// const numbers5 = [1, 2, 3, 4, 5];
+// const doubledNumbers = [];
+// numbers5.forEach((number) => {
+//     doubledNumbers.push(number * 2);
+// });
+// console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+// const numbers6 = [1, 2, 3, 4, 5];
+// const doubledNumbers2 = numbers6.map((number) => number * 2);
+// console.log(doubledNumbers2); // [2, 4, 6, 8, 10]
+// const numbers7 = [1, 2, 3, 4, 5];
+// const doubledNumbers3 = numbers7.map((number) => {
+//     return number * 2;
+// });
+// console.log(doubledNumbers3); // [2, 4, 6, 8, 10]
+// const numbers8 = [1, 2, 3, 4, 5];
+// const doubledNumbers4 = numbers8.map((number, index) => {
+//     return `Index: ${index}, Number: ${number * 2}`;
+// });
+// console.log(doubledNumbers4); // ['Index: 0, Number: 2', 'Index: 1, Number: 4', ...]
+// const numbers9 = [1, 2, 3, 4, 5];
+// const doubledNumbers5 = numbers9.map((number) => number * 2);
+// console.log(doubledNumbers5); // [2, 4, 6, 8, 10]
+// const numbers10 = [1, 2, 3, 4, 5];
+// const doubledNumbers6 = numbers10.map((number) => number * 2);
+// console.log(doubledNumbers6); // [2, 4, 6, 8, 10]
+// const numbers11 = [1, 2, 3, 4, 5];
+// const doubledNumbers7 = numbers11.map((number) => number * 2);
+// console.log(doubledNumbers7); // [2, 4, 6, 8, 10]
+
+
+// // The filter method
+// const numbers12 = [1, 2, 3, 4, 5];
